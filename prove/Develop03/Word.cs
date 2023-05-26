@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-class TextConvert
+class Word
 {
     private string _newText = string.Empty;
     private string[] _text = new string[] { };
     private string[] newTextBody = new string[] { };
-    public TextConvert(string text)
+    public Word(string text)
     {
         _newText = text;
     }

@@ -15,7 +15,7 @@ class Scriptures
 
     public string getScriptureHeader()
     {
-        TextConvert txtConvert = new TextConvert(scriptureUnformatted);
+        Word txtConvert = new Word(scriptureUnformatted);
         string[] scriptureSplit = txtConvert.splitWord(fileSep_1);
         string book = scriptureSplit[0];
         string verse = scriptureSplit[1];
@@ -32,7 +32,7 @@ class Scriptures
 
     public string getNewTextBody(string stringToChange)
     {
-        TextConvert txtConvert = new TextConvert(stringToChange);
+        Word txtConvert = new Word(stringToChange);
         string[] newText = txtConvert.replaceText(stringToChange);
         string result = txtConvert.JoinText(fileSep_1, newText, 0);
         return result;
