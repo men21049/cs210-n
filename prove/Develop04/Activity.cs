@@ -4,27 +4,27 @@ using System;
 class Activity
 {
 
-    private string activityName = string.Empty;
-    private List<string> activityList;
-    private string description = string.Empty;
+    private string _activityName = string.Empty;
+    private List<string> _activityList;
+    private string _description = string.Empty;
 
-    public Activity(string _activityName)
+    public Activity(string activityName)
     {
-        activityName = _activityName;
+        _activityName = activityName;
     }
 
-    public void SetDescription(string _description)
+    public void SetDescription(string description)
     {
-        description = _description;
+        _description = description;
     }
 
-    public void SetActivityList(List<string> _activityList)
+    public void SetActivityList(List<string> activityList)
     {
-        activityList = _activityList.ToList();
+        _activityList = activityList.ToList();
     }
     public int DisplayMenu()
     {
-        clearConsole();
+        ClearConsole();
         Console.WriteLine("Menu Options: ");
         Console.WriteLine("   1.- Start breathing activity");
         Console.WriteLine("   2.- Start reflection activity");
@@ -38,9 +38,9 @@ class Activity
 
     public int DisplayWelcomeMessage()
     {
-        clearConsole();
-        Console.WriteLine($"Welcome to the {char.ToUpper(activityName[0])}{activityName.Substring(1)} Activity");
-        Console.WriteLine($"{description}");
+        ClearConsole();
+        Console.WriteLine($"Welcome to the {char.ToUpper(_activityName[0])}{_activityName.Substring(1)} Activity");
+        Console.WriteLine($"{_description}");
         Console.WriteLine("How long, in seconds, would you like for your session? ");
         int seconds = int.Parse(Console.ReadLine());
         return seconds;
@@ -48,23 +48,28 @@ class Activity
 
     public void DisplayGetReady()
     {
-        clearConsole();
+        ClearConsole();
         Console.WriteLine("Get ready...");
     }
 
-    public void clearConsole()
+    public void ClearConsole()
     {
         Console.Clear();
     }
 
-    public void FinishActivity(int numSecondsToRun, string _activityName)
+    public void FinishActivity(int numSecondsToRun, string activityName)
     {
         Console.WriteLine("Well Done!!");
-        Console.WriteLine($"Ÿou have completed another {numSecondsToRun} seconds of the {_activityName} Activity");
+        Console.WriteLine($"Ÿou have completed another {numSecondsToRun} seconds of the {activityName} Activity");
     }
 
-    public string getActivityName()
+    public string GetActivityName()
     {
-        return activityName;
+        return _activityName;
+    }
+
+    public List<string> GetActivityList()
+    {
+        return _activityList;
     }
 }

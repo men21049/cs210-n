@@ -2,40 +2,38 @@ using System;
 
 class ListingActivity : Activity
 {
-    List<string> activityList = new List<string> {"Who are people that you appreciate?"
+    List<string> _listingList = new List<string>();
+    public ListingActivity(string activityName) : base(activityName)
+    {
+        SetDescription("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
+        SetActivityList(new List<string> {"Who are people that you appreciate?"
                                                   ,"What are personal strengths of yours?"
                                                   ,"Who are people that you have helped this week?"
                                                   ,"When have you felt the Holy Ghost this month?"
-                                                  ,"Who are some of your personal heroes?"};
-    List<string> listingList = new List<string>();
-    string description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
-    public ListingActivity(string _activityName) : base(_activityName)
-    {
-        SetDescription(description);
-        SetActivityList(activityList);
+                                                  ,"Who are some of your personal heroes?"});
     }
 
     public void DisplayActivity()
     {
 
         Random random = new Random();
-        int index = random.Next(activityList.Count);
+        int index = random.Next(GetActivityList().Count);
         Console.WriteLine("List as many reponses you can to the following prompt");
-        Console.WriteLine($"---- {activityList[index]} ----");
+        Console.WriteLine($"---- {GetActivityList()[index]} ----");
     }
 
-    public void setListingList(List<string> ll)
+    public void SetListingList(List<string> ll)
     {
-        listingList = ll;
+        _listingList = ll;
     }
 
-    public int getListingListCount()
+    public int GetListingListCount()
     {
-        return listingList.Count;
+        return _listingList.Count;
     }
 
-    public void displayTotalListingCount()
+    public void DisplayTotalListingCount()
     {
-        Console.WriteLine($"You listed {getListingListCount()} items");
+        Console.WriteLine($"You listed {GetListingListCount()} items");
     }
 }

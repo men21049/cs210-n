@@ -3,7 +3,7 @@ using System;
 
 class MindFulness
 {
-    WaitingDisplay display = new WaitingDisplay();
+    WaitingDisplay _display = new WaitingDisplay();
     public MindFulness()
     {
 
@@ -18,24 +18,24 @@ class MindFulness
             BreathingActivity breath = new BreathingActivity("Breathing");
             int numSecondsToRun = breath.DisplayWelcomeMessage();
             breath.DisplayGetReady();
-            display.displaySpinner(3);
-            display.displayCountDown(4, numSecondsToRun, breath.getActivityList());
-            breath.FinishActivity(numSecondsToRun, breath.getActivityName());
-            display.displaySpinner(5);
+            _display.DisplaySpinner(3);
+            _display.DisplayCountDown(4, numSecondsToRun, breath.GetActivityList());
+            breath.FinishActivity(numSecondsToRun, breath.GetActivityName());
+            _display.DisplaySpinner(5);
             SetActivity(breath.DisplayMenu());
         }
         else if (choice == 2)
         {
             ReflectionActivity reflect = new ReflectionActivity("Reflection");
             int numSecondsToRun = reflect.DisplayWelcomeMessage();
-            reflect.setNumberOfSecondsToThink(numSecondsToRun);
+            reflect.SetNumberOfSecondsToThink(numSecondsToRun);
             reflect.DisplayGetReady();
-            display.displaySpinner(3);
-            reflect.getRandomReflectionActivity();
-            display.displayCountDown(4, numSecondsToRun, null, "You may begin in ");
-            display.displaySpinnerWithText(reflect.getRandomReflectionQuestionActivity(), reflect.getNumberOfSecondsToThink());
-            reflect.FinishActivity(numSecondsToRun, reflect.getActivityName());
-            display.displaySpinner(5);
+            _display.DisplaySpinner(3);
+            reflect.GetRandomReflectionActivity();
+            _display.DisplayCountDown(4, numSecondsToRun, null, "You may begin in ");
+            _display.DisplaySpinnerWithText(reflect.GetRandomReflectionQuestionActivity(), reflect.GetNumberOfSecondsToThink());
+            reflect.FinishActivity(numSecondsToRun, reflect.GetActivityName());
+            _display.DisplaySpinner(5);
             SetActivity(reflect.DisplayMenu());
         }
         else if (choice == 3)
@@ -43,13 +43,13 @@ class MindFulness
             ListingActivity listing = new ListingActivity("Listing");
             int numSecondsToRun = listing.DisplayWelcomeMessage();
             listing.DisplayGetReady();
-            display.displaySpinner(3);
+            _display.DisplaySpinner(3);
             listing.DisplayActivity();
-            display.displayCountDown(4, numSecondsToRun, null, "You may begin in ");
-            listing.setListingList(display.GetMultipleLinesWithTimer(numSecondsToRun));
-            listing.displayTotalListingCount();
-            listing.FinishActivity(numSecondsToRun, listing.getActivityName());
-            display.displaySpinner(5);
+            _display.DisplayCountDown(4, numSecondsToRun, null, "You may begin in ");
+            listing.SetListingList(_display.GetMultipleLinesWithTimer(numSecondsToRun));
+            listing.DisplayTotalListingCount();
+            listing.FinishActivity(numSecondsToRun, listing.GetActivityName());
+            _display.DisplaySpinner(5);
             SetActivity(listing.DisplayMenu());
 
         }
@@ -57,10 +57,5 @@ class MindFulness
         {
             Environment.Exit(0);
         }
-    }
-
-    public void setActivityTime(int seconds)
-    {
-
     }
 }

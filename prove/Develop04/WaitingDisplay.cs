@@ -4,7 +4,7 @@ using System.Threading;
 
 class WaitingDisplay
 {
-    int spinnerCounter = 0;
+    int _spinnerCounter = 0;
 
     public List<string> GetMultipleLinesWithTimer(int numSecondsToRun)
     {
@@ -22,14 +22,14 @@ class WaitingDisplay
         return list;
     }
 
-    public void displaySpinner(int numSecondsToRun)
+    public void DisplaySpinner(int numSecondsToRun)
     {
         Stopwatch stopWatch = new Stopwatch();
         stopWatch.Start();
         while (stopWatch.ElapsedMilliseconds / 1000 < numSecondsToRun)
         {
-            spinnerCounter++;
-            switch (spinnerCounter % 4)
+            _spinnerCounter++;
+            switch (_spinnerCounter % 4)
             {
                 case 0: Console.Write("/"); break;
                 case 1: Console.Write("-"); break;
@@ -43,17 +43,17 @@ class WaitingDisplay
         Console.WriteLine("");
     }
 
-    public void displaySpinnerWithText(List<string> list, int numSecondsToRun)
+    public void DisplaySpinnerWithText(List<string> list, int numSecondsToRun)
     {
         foreach (string item in list)
         {
             Console.Write($"{item}");
-            displaySpinner(numSecondsToRun);
+            DisplaySpinner(numSecondsToRun);
         }
 
     }
 
-    public void displayCountDown(int numSecondsToRun, int totalActivity, List<string> list = default(List<string>), string text = "")
+    public void DisplayCountDown(int numSecondsToRun, int totalActivity, List<string> list = default(List<string>), string text = "")
     {
         if (list?.Any() == true)
         {
